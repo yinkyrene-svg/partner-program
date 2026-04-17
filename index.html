@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<style>
+/* 基础适配：模拟手机 9:16 比例 */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  width: 100%; 
+  max-width: 430px; /* 适配主流手机屏幕宽度 */
+  margin: 0 auto;
+  background: #F8F5F0;
+  font-family: 'STSong', 'SimSun', 'Songti SC', Georgia, serif;
+  color: #1A1A1A;
+  min-height: 100vh;
+}
+
+/* HERO SECTION */
+.hero {
+  background: #F0EBE0;
+  padding: 60px 30px 50px;
+  border-bottom: 2px solid #C4A060;
+  position: relative;
+  overflow: hidden;
+}
+.hero-deco {
+  position: absolute; top: -40px; right: -40px;
+  width: 200px; height: 200px; border-radius: 50%;
+  border: 1px solid rgba(196,160,96,0.2);
+}
+.hero-line { width: 40px; height: 2px; background: #C4A060; margin-bottom: 20px; }
+.hero-label {
+  font-family: Arial, sans-serif;
+  font-size: 10px; letter-spacing: 0.2em;
+  color: #A89880; text-transform: uppercase; margin-bottom: 12px;
+}
+.hero-title {
+  font-size: 32px; font-weight: normal;
+  color: #1A1A1A; line-height: 1.3;
+  letter-spacing: 0.05em; margin-bottom: 8px;
+}
+.hero-title-en {
+  font-family: 'Garamond', 'Times New Roman', serif;
+  font-size: 10px; color: #B0A080;
+  letter-spacing: 0.1em; margin-bottom: 25px;
+  line-height: 1.4;
+}
+.hero-divider { width: 100%; height: 1px; background: rgba(196,160,96,0.25); margin-bottom: 20px; }
+.hero-desc {
+  font-family: 'PingFang SC', sans-serif;
+  font-size: 14px; color: #6B6050; line-height: 1.8;
+}
+
+/* SECTION COMMON */
+.section { padding: 40px 25px 0; }
+.section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 25px; }
+.section-num {
+  font-family: 'Garamond',serif;
+  font-size: 12px; color: #C4A060; letter-spacing: 0.1em;
+}
+.section-title { font-size: 12px; letter-spacing: 0.2em; color: #1A1A1A; font-weight: bold; }
+.section-line { flex: 1; height: 1px; background: #DDD8CE; }
+
+/* PRODUCT CARDS */
+.product-card {
+  border: 1px solid #DDD8CE;
+  margin-bottom: 15px;
+  background: #FFFFFF;
+}
+.product-card-inner { display: flex; flex-direction: row; }
+.product-left {
+  flex: 1; padding: 20px;
+  border-right: 1px solid #EDE9E0;
+}
+.product-right {
+  width: 100px; padding: 15px;
+  background: #F7F3EC;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  text-align: center;
+}
+.product-name { font-size: 16px; margin-bottom: 4px; color: #1A1A1A; }
+.product-name-en {
+  font-size: 9px; color: #B0A898; letter-spacing: 0.05em; margin-bottom: 12px;
+}
+.product-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag {
+  font-size: 10px; color: #7A6E60;
+  background: #F0ECE4; padding: 3px 8px;
+}
+.rate-num {
+  font-family: 'Garamond', serif;
+  font-size: 28px; color: #C4A060; line-height: 1; margin-bottom: 4px;
+}
+.rate-label { font-size: 9px; color: #A89880; transform: scale(0.9); }
+
+/* COMMISSION TABLE */
+.commission-wrap { padding: 30px 25px 0; }
+.commission-box {
+  background: #FFFDF8;
+  border: 1px solid #DDD8CE;
+  border-top: 3px solid #C4A060;
+  padding: 25px 20px;
+}
+.comm-header { margin-bottom: 20px; }
+.comm-title-main { font-size: 18px; margin-bottom: 4px; }
+.comm-title-sub { font-size: 10px; color: #B0A080; letter-spacing: 1px; }
+
+.comm-table-header {
+  font-size: 11px; color: #A89880;
+  padding-bottom: 8px; border-bottom: 1px solid #C4A060;
+  margin-top: 20px; margin-bottom: 10px;
+  text-transform: uppercase;
+}
+.comm-row {
+  display: flex; justify-content: space-between;
+  padding: 10px 0; border-bottom: 1px solid #F2EEE6;
+}
+.cl { font-size: 12px; color: #7A6E60; }
+.cv { font-size: 12px; font-weight: bold; }
+.cv-gold { color: #B08030; font-size: 14px; }
+
+/* FLOW */
+.flow-steps { display: flex; flex-direction: column; gap: 20px; padding-left: 10px; }
+.flow-step { display: flex; align-items: flex-start; gap: 15px; position: relative; }
+.flow-step:not(:last-child)::after {
+    content: ''; position: absolute; left: 15px; top: 30px; bottom: -15px;
+    width: 1px; background: #DDD8CE;
+}
+.step-circle {
+  width: 30px; height: 30px; border-radius: 50%;
+  background: #FFF; border: 1px solid #C4A060;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; color: #C4A060; flex-shrink: 0;
+  position: relative; z-index: 1;
+}
+.step-content { flex: 1; }
+.step-title { font-size: 13px; font-weight: bold; margin-bottom: 4px; }
+.step-desc { font-size: 11px; color: #A89880; line-height: 1.4; }
+
+/* COMPLIANCE GRID */
+.compliance-grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
+.comp-item {
+  background: #FFFFFF; border: 1px solid #DDD8CE;
+  border-left: 3px solid #C4A060; padding: 15px;
+  font-size: 12px; color: #5A5448; line-height: 1.6;
+}
+
+/* FOOTER */
+.footer {
+  margin-top: 50px; background: #F0EBE0;
+  padding: 30px 25px; border-top: 1px solid #C4A060;
+}
+.footer-co { font-size: 16px; margin-bottom: 5px; }
+.footer-co-en { font-size: 9px; color: #A89880; margin-bottom: 15px; }
+.footer-contact { font-size: 12px; color: #7A6E60; line-height: 1.8; }
+.footer-disc {
+  background: #EDE8DC; padding: 20px 25px;
+  font-size: 10px; color: #A89880; line-height: 1.6;
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-deco"></div>
+  <div class="hero-line"></div>
+  <div class="hero-label">Partner Collaboration Program</div>
+  <div class="hero-title">香港梧桐栖地<br>控股有限公司</div>
+  <div class="hero-title-en">HONG KONG WUTONG ACHIEVEMENT HOLDINGS CO LIMITED</div>
+  <div class="hero-divider"></div>
+  <div class="hero-desc">专注香港信托架构下的高净值资产配置服务。您只需完成客户引荐，后端服务由我方专业持牌团队全程负责。</div>
+</div>
+
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <span class="section-title">核 心 产 品</span>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="product-card">
+    <div class="product-card-inner">
+      <div class="product-left">
+        <div class="product-name">全球 / 香港信托</div>
+        <div class="product-name-en">GLOBAL / HK TRUST · FIXED INCOME</div>
+        <div class="product-tags">
+          <span class="tag">3,000万HKD起</span><span class="tag">100%固收资产</span>
+        </div>
+      </div>
+      <div class="product-right">
+        <div class="rate-num">5%</div>
+        <div class="rate-label">目标年化</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <div class="product-card-inner">
+      <div class="product-left">
+        <div class="product-name">标准盛丰环球基金</div>
+        <div class="product-name-en">STANDARD PERPETUAL GLOBAL FUND</div>
+        <div class="product-tags">
+          <span class="tag">1,000万HKD起</span><span class="tag">封闭期2年</span>
+        </div>
+      </div>
+      <div class="product-right">
+        <div class="rate-num">3%+</div>
+        <div class="rate-label">基础派息</div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="product-card">
+    <div class="product-card-inner">
+      <div class="product-left">
+        <div class="product-name">香港房地产置业</div>
+        <div class="product-name-en">HK PROPERTY ACQUISITION</div>
+        <div class="product-tags">
+          <span class="tag">高端住宅/商业</span><span class="tag">定向收购</span>
+        </div>
+      </div>
+      <div class="product-right">
+        <div class="rate-num" style="font-size:20px;">定制</div>
+        <div class="rate-label">一事一议</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="commission-wrap">
+  <div class="commission-box">
+    <div class="comm-header">
+      <div class="comm-title-main">合 作 收 益 结 构</div>
+      <div class="comm-title-sub">PARTNER REVENUE STRUCTURE</div>
+    </div>
+
+    <div class="comm-table-header">信托产品与开户费用</div>
+    <div class="comm-row">
+      <span class="cl">开户奖励 (一次性)</span>
+      <span class="cv cv-gold">50万港元</span>
+    </div>
+    <div class="comm-row">
+      <span class="cl">3年期持续收益</span>
+      <span class="cv">AUM × 1% /半年</span>
+    </div>
+    <div class="comm-row">
+      <span class="cl">7年期持续收益</span>
+      <span class="cv">AUM × 2% /半年</span>
+    </div>
+    <div class="comm-row">
+      <span class="cl">认购费 (自主定价)</span>
+      <span class="cv">0% – 2%</span>
+    </div>
+
+    <div class="comm-table-header">基金分成与房产佣金</div>
+    <div class="comm-row">
+      <span class="cl">地产基金年度收益分成</span>
+      <span class="cv">收益 × 30%</span>
+    </div>
+    <div class="comm-row">
+      <span class="cl">房产销售佣金</span>
+      <span class="cv">另行议定</span>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <span class="section-title">合 作 流 程</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="flow-steps">
+    <div class="flow-step">
+      <div class="step-circle">1</div>
+      <div class="step-content">
+        <div class="step-title">需求识别</div>
+        <div class="step-desc">递交意向表，对接后端团队</div>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="step-circle">2</div>
+      <div class="step-content">
+        <div class="step-title">专业接手</div>
+        <div class="step-desc">KYC审核、文件签署、全程陪同</div>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="step-circle">3</div>
+      <div class="step-content">
+        <div class="step-title">资金入账</div>
+        <div class="step-desc">直转独立托管账户，渠道不经手</div>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="step-circle">4</div>
+      <div class="step-content">
+        <div class="step-title">收益派发</div>
+        <div class="step-desc">佣金按期结算，收益长期派发</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <span class="section-title">合 规 保 障</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="compliance-grid">
+    <div class="comp-item">资金直达独立托管账户，资金流透明可追溯。</div>
+    <div class="comp-item">香港持牌执行主体，严格履行 KYC / AML 审核。</div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer-co">香港梧桐栖地控股有限公司</div>
+  <div class="footer-co-en">HONG KONG WUTONG ACHIEVEMENT HOLDINGS CO LIMITED</div>
+  <div class="footer-contact">
+    T：18690635013<br>
+    E：ying.yin@standardperpetual.com
+  </div>
+</div>
+<div class="footer-disc">本资料仅供内部参考。所有收益数据为目标值，受保密义务约束，请勿对外公开。</div>
+
+</body>
+</html>
